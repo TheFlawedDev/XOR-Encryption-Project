@@ -51,5 +51,5 @@ public:
    * @param the key to decrypt it.
    * @return the origninal strings form.
    */
-  std::string decryptString(std::string &text);
+  std::string decryptString(std::string &text, unsigned char key);
 };
