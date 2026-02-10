@@ -42,7 +42,7 @@ public:
    * @param character to used as encryption value
    * @return a string representation of the now encrypted string.
    */
-  std::string encryptString(std::string &text, unsigned char key);
+  void encryptString(std::string &text);
 
   /**
    * @brief Turns an encrypted string back to its original form.
@@ -51,5 +51,5 @@ public:
    * @param the key to decrypt it.
    * @return the origninal strings form.
    */
-  std::string decryptString(std::string &text, unsigned char key);
+  std::string decryptString(std::string &text);
 };
