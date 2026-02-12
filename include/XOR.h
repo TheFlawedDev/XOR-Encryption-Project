@@ -26,30 +26,25 @@ private:
    */
   unsigned char keyGenerator();
 
-  /**
-   * @brief Takes in a string and turns it into Hex.
-   *
-   * @param string of encrypted values
-   * @return a hex value
-   */
-  std::string printAsHex(const std::string &text);
+  // Helper to convert raw bytes to Hex string
+  std::string toHex(const std::string &text);
 
 public:
   /**
    * @brief Takes in a string and encrypts it with a key.
    *
-   * @param string to be encrypted
-   * @param character to used as encryption value
-   * @return a string representation of the now encrypted string.
+   * @param String to be encrypted
+   * @param Character to used as encryption value
+   * @return Returns the HEX representation of the encrypted string
    */
-  void encryptString(std::string &text);
+  std::string encryptString(std::string &text);
 
   /**
    * @brief Turns an encrypted string back to its original form.
    *
-   * @param an encrypted string.
-   * @param the key to decrypt it.
-   * @return the origninal strings form.
+   * @param An encrypted string.
+   * @param The key to decrypt it.
+   * @return Returns the HEX representation of the found match (or "" if failed)
    */
-  bool decryptString(std::string &text);
+  std::string decryptString(std::string &text);
 };

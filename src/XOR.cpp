@@ -4,8 +4,10 @@
  */
 #include "../include/XOR.h"
 #include <algorithm>
+#include <iomanip>
 #include <map>
 #include <random>
+#include <sstream>
 #include <vector>
 
 unsigned char XOR::keyGenerator() {
@@ -22,9 +24,15 @@ unsigned char XOR::keyGenerator() {
   return character_val;
 }
 
-std::string printAsHex(const std::string &text);
+std::string XOR::toHex(const std::string &text) {
+  std::stringstream ss;
+  for (unsigned char c : text) {
+    ss << std::hex << std::setw(2) << std::setfill('0') << (int)c;
+  }
+  return ss.str();
+}
 
-void XOR::encryptString(std::string &text) {
+std::string XOR::encryptString(std::string &text) {
   // call to generate a random key
   unsigned char cipherKey = keyGenerator();
 
@@ -39,9 +47,12 @@ void XOR::encryptString(std::string &text) {
   if (std::find(vec.begin(), vec.end(), text) == vec.end()) {
     vec.push_back(text);
   }
+
+  // Return the Hex representation so Main can print it
+  return toHex(text);
 }
 
-bool XOR::decryptString(std::string &text) {
+std::string XOR::decryptString(std::string &text) {
 
   // Loop through ALL possible keys (0-255)
   // We use int to avoid infinite loop issues with unsigned char
@@ -68,11 +79,10 @@ bool XOR::decryptString(std::string &text) {
 
     if (vecIt != list.end()) {
       // Match found!
-      return true;
+      return toHex(tempString);
     }
   }
 
   // No match found with any key
-
-  return false;
+  return "";
 }
