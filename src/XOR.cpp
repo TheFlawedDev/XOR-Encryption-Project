@@ -3,6 +3,7 @@
  * @version 02/10/2026
  */
 #include "../include/XOR.h"
+#include <algorithm>
 #include <map>
 #include <random>
 #include <vector>
@@ -40,4 +41,38 @@ void XOR::encryptString(std::string &text) {
   }
 }
 
-std::string decryptString(std::string &text, unsigned char key);
+bool XOR::decryptString(std::string &text) {
+
+  // Loop through ALL possible keys (0-255)
+  // We use int to avoid infinite loop issues with unsigned char
+  for (int k = 0; k <= 255; ++k) {
+    unsigned char currentKey = static_cast<unsigned char>(k);
+
+    // Check if this key even exists in our map first
+    auto mapIt = stringStorage.find(currentKey);
+    if (mapIt == stringStorage.end()) {
+      continue;
+    }
+
+    // Create a copy to test
+    std::string tempString = text;
+
+    // Encrypt the temporary string
+    for (char &e : tempString) {
+      e = e ^ currentKey;
+    }
+
+    // Check if this encrypted candidate is in the list
+    const std::vector<std::string> &list = mapIt->second;
+    auto vecIt = std::find(list.begin(), list.end(), tempString);
+
+    if (vecIt != list.end()) {
+      // Match found!
+      return true;
+    }
+  }
+
+  // No match found with any key
+
+  return false;
+}
