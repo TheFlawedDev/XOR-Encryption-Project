@@ -2,7 +2,7 @@
  * @author Jorge Velazquez
  * @version 02/12/2026
  */
-#include "../include/XOR.h"
+#include "XOR.h"
 #include <algorithm>
 #include <iomanip>
 #include <map>

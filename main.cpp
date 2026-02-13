@@ -1,4 +1,4 @@
-#include "include/XOR.h"
+#include "XOR.h"
 #include <iostream>
 
 int main() {
