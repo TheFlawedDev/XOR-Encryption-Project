@@ -1,6 +1,6 @@
 /*
  * @author Jorge Velazquez
- * @version 02/10/2026
+ * @version 02/12/2026
  */
 #include "../include/XOR.h"
 #include <algorithm>
