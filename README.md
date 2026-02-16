@@ -19,7 +19,7 @@ make mainTest
 ./mainTest
 ```
 
-4. Clean up
+4. Clean up (optional)
 To remove the executable and object file after you are done:
 ```bash
 make clean
@@ -30,6 +30,4 @@ make clean
 
 ## Ethical Implications & Utility
   My intention behind this project was to understand the functionality of XOR when used in encryption and to build a foundational, (weak) encryption tool. The tool uses a HEX format to show a visual representation of the encrypted text --this is because of the limitation in which binary can be represented as symbols in a terminal. This design choice brings up an ethical dilemma, it can give a sense of security --a non-technical user might assume the HEX output is not their original text and thus the text is "*secure*". But this is far from it, as stated in the "Limitations" section, the simplicity of the key allows attackers to easily brute-force the decryption.
-
-## License
 
